@@ -20,16 +20,23 @@ spec:
           envFrom:
             - configMapRef:
                 name: customer-api-config
+                secretRef:
+                  name:customer-api-secret 
           ports:
             - name: http
               containerPort: 8080
-          readinessProbe:
+      startupProbe:
+          httpGet:
+            path: /healthz
+          periodSeconds: 2
+          failureThreshold: 15 
+      readinessProbe:
             httpGet:
               path: /ready
               port: http
             periodSeconds: 3
             failureThreshold: 2
-          livenessProbe:
+      livenessProbe:
             httpGet:
               path: /healthz
               port: http

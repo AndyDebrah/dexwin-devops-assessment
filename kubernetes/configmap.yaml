@@ -6,4 +6,4 @@ metadata:
 data:
   APP_VERSION: "2.0.0"
   STARTUP_DELAY_MS: "15000"
-  UPSTREAM_API_TOKEN: "assessment-placeholder-token"
+  
